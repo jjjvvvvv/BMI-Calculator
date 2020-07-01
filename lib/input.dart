@@ -13,17 +13,69 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
         centerTitle: true,
       ),
-      body: Container(
-        color: Color(0xFF1d1e33),
-        margin: EdgeInsets.all(15.0),
-        height: 200.0,
-        width: 170.0,
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    color: Color(0xFF1D1e33),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    color: Color(0xFF1D1e33),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    color: Color(0xFF1D1e33),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    color: Color(0xFF1D1e33),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    color: Color(0xFF1D1e33),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
-      floatingActionButton: Theme(
-        data: ThemeData(accentColor: Colors.purple),
-        child: FloatingActionButton(
-          child: Icon(Icons.add),
-        ),
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  ReusableCard({@required this.color});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
