@@ -3,10 +3,15 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 
-const bottomContainerHeight = 70.0;
+const bottomContainerHeight = 60.0;
 const bottomColor = Color(0xFFEB1555);
 const cardColor = Color(0xFF1D1e33);
 const inactiveColor = Color(0xFF111328);
+
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -16,9 +21,9 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleCardColor = inactiveColor;
   Color femaleCardColor = inactiveColor;
-  // 1 = M, 2 = F
-  void updateColor(int gender) {
-    if (gender == 1) {
+
+  void updateColor(Gender selectedGender) {
+    if (selectedGender == Gender.male) {
       if (maleCardColor == inactiveColor) {
         maleCardColor = cardColor;
         femaleCardColor = inactiveColor;
@@ -26,7 +31,7 @@ class _InputPageState extends State<InputPage> {
         maleCardColor = inactiveColor;
       }
     } else {
-      if (gender != 1) {
+      if (selectedGender == Gender.female) {
         if (femaleCardColor == inactiveColor) {
           femaleCardColor = cardColor;
           maleCardColor = inactiveColor;
@@ -53,7 +58,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(1);
+                        updateColor(Gender.male);
                       });
                     },
                     child: ReusableCard(
@@ -69,7 +74,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(2);
+                        updateColor(Gender.female);
                       });
                     },
                     child: ReusableCard(
